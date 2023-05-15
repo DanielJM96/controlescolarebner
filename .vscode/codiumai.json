@@ -1,0 +1,8 @@
+{
+    "test": {
+      "command": "npm run test:unit",
+      "language": "typescript",
+      "pattern": "**/*.test.ts",
+      "jestConfig": "./jest.config.js"
+    }
+}
