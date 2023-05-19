@@ -41,6 +41,12 @@ class User extends Model{
     staff_id!: string;
 
     @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    user_type!: string;
+
+    @Column({
         type: DataType.BOOLEAN,
         allowNull: false,
         defaultValue: true

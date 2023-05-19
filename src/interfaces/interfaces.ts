@@ -28,7 +28,8 @@ export interface UserAttributes {
     name_user:string;
     pass: string;
     email: string;
-    staff_id: string
+    staff_id: string;
+    user_type: string;
 }
 
 

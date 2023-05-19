@@ -25,7 +25,10 @@ export const UserSchema: JSONSchemaType<UserAttributes> =  {
             type: "string",
             minLength: 9,
             maxLength: 9,
+        },
+        user_type: {
+            type: "string"
         }
     },
-    required: ["name_user", "pass", "email", "staff_id"],
+    required: ["name_user", "pass", "email", "staff_id", "user_type"],
 }

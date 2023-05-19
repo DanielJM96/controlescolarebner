@@ -5,12 +5,13 @@ interface UserInterface {
     pass: string;
     email: string;
     staff_id: string;
+    user_type: string;
 }
 
-export const dbAccessCreateUSer = async ({name_user, email, pass, staff_id}: UserInterface) => {
+export const dbAccessCreateUSer = async ({name_user, email, pass, staff_id, user_type}: UserInterface) => {
     try{
 
-        const newUser = User.build({name_user, email, pass, staff_id});
+        const newUser = User.build({name_user, email, pass, staff_id, user_type});
         await newUser.save();
 
         return {

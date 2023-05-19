@@ -6,7 +6,7 @@ import { UserSchema } from "../models/schema/schemaUsers";
 const router: Router = Router();
 
 //create User POST request 
-router.post('/', [validateFields(UserSchema)],createUser);
+router.post('/', [validateFields(UserSchema)], createUser);
 
 export {
     router
