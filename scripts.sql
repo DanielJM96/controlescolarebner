@@ -86,3 +86,55 @@ app.use((req, res, next) => {
 
 // Resto de tu lógica de API aquí...
 
+
+semestre: id_semestre, semestre, 
+
+create table semestres(
+    id_semestre int primary key auto_increment,
+    semestre varchar(100) not null
+)
+
+grupos: id_grupo, grupo 
+
+create table grupos (
+    id_grupo int primary key auto_increment,
+    grupo varchar(100)
+)
+
+evaluaciones: id_evaluacion, tipo_evaluacion
+create table evaluaciones(
+    id_evaluacion int primary key auto_increment,
+    tipo_evaluacion varchar(100)
+)
+
+materias: id_materia, materia, creditos
+create table materias(
+    id_materia int primary key auto_increment,
+    materia varchar(100),
+    creditos varchar(10)
+)
+
+calificaciones: id_calificacion, calificacion, id_materia, id_evaluacion, id_grupo, id_usuario, id_semestre
+
+create table calificaciones(
+    id_calificacion int primary key auto_increment,
+    calificacion int ,
+    id_materia int,
+    id_evaluacion int,
+    id_grupo int,
+    id_usuario int,
+    id_semestre int 
+    FOREIGN KEY (id_materia) REFERENCES materias(id_materia),
+    FOREIGN KEY (id_evaluacion) REFERENCES evaluaciones(id_evaluacion),
+    FOREIGN KEY (id_grupo) REFERENCES grupos(id_grupo),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_semestre) REFERENCES semestres(id_semestre)
+)ENGINE=INNODB
+
+create table usuarios(
+    id_usuario int primary key auto_increment,
+    nonbre varchar(100)
+)
+
+
+SELECT cal.calificacion, m.materia, ev.tipo_evaluacion, g.grupo, u.nombre, s.semestre FROM calificaciones as cal INNER JOIN materias as m ON m.id_materia = cal.id_materia INNER JOIN evaluaciones as ev ON ev.id_evaluacion = cal.id_evaluacion INNER JOIN grupos AS g ON g.id_grupo = cal.id_grupo INNER JOIN usuarios as u ON u.id_usuario = cal.id_usuario INNER JOIN semestres as s ON s.id_semestre = cal.id_semestre where g.grupo = "a2";
